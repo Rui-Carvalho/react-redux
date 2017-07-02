@@ -2,13 +2,13 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
-
 import { BrowserRouter, Route } from 'react-router-dom';
-
-import App from './components/app';
 import reducers from './reducers';
+import PostsIndex from './components/posts_index';
+import PostsNew from './components/posts_new';
+import promise from 'redux-promise';
 
-const createStoreWithMiddleware = applyMiddleware()(createStore);
+const createStoreWithMiddleware = applyMiddleware(promise)(createStore);
 
 class Hello extends React.Component {
 	render () {
@@ -28,9 +28,8 @@ ReactDOM.render(
   <Provider store={createStoreWithMiddleware(reducers)}>
 	<BrowserRouter>
 		<div>
-			=====Header=====
-			<Route path="/hi" component={Hello} />
-			<Route path="/bye" component={Goodbye} />
+			<Route path="/" component={PostsIndex} />
+			<Route path="/posts/new" component={PostsNew} />
 		</div>
 	</BrowserRouter>
   </Provider>
