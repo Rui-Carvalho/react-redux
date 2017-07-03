@@ -10,20 +10,6 @@ import promise from 'redux-promise';
 
 const createStoreWithMiddleware = applyMiddleware(promise)(createStore);
 
-class Hello extends React.Component {
-	render () {
-		return (
-			<div>Hello</div>
-		);
-	};
-}
-
-class Goodbye extends React.Component {
-	render () {
-		return (<div>Goodbye</div>);
-	};
-}
-
 ReactDOM.render(
   <Provider store={createStoreWithMiddleware(reducers)}>
 	<BrowserRouter>
