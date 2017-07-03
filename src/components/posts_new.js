@@ -1,27 +1,28 @@
 import React, { Component } from 'react';
-// import { connect } from 'react-redux';
-// import { fetchPosts } from '../actions';
-// import _ from 'lodash';
-
+import { Field, reduxForm } from 'redux-form';
 
 class PostsNew extends Component {
 
-    // componentDidMount() {
-    //     this.props.fetchPosts();
-    // }
+    renderTitleField(field) {
+        return (
+            <div>
+                <input type="text" {...field.input} />
+            </div>
+        );
+    }
 
     render() {
         return (
-            <div>
-                <h3>New Post</h3>
-            </div>
+            <form>
+                <Field
+                    name="title"
+                    component={ this.renderTitleField }
+                />
+            </form>
         );
     }
 }
 
-// function mapStateToProps(state) {
-//     return { posts: state.posts };
-// }
-//
-// export default connect(mapStateToProps, {fetchPosts} )(PostsIndex);
-export default PostsNew;
+export default reduxForm({
+    form: 'PostsNewForm'
+})(PostsNew);
