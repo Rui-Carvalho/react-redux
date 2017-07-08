@@ -46,7 +46,7 @@ function validate(values) {
         errors.title = "Please give the post a title!";
     }
 
-    if(values.title.length < 3) {
+    if(values.title && values.title.length < 3) {
         errors.title = "Please give the post title more than 3 characters!";
     }
 
