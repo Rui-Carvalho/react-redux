@@ -32,7 +32,8 @@ module.exports = {
       }
   }),
   devServer: {
-    historyApiFallback: true,
-    contentBase: './'
+      port: 5000,
+      historyApiFallback: true,
+      contentBase: './'
   }
 };
