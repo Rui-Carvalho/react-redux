@@ -26,8 +26,9 @@ class PostsNew extends Component {
 
     onSubmit(values) {
         //console.log(values);
-        this.props.history.push('/'); //==> navigates to the list of posts
-        this.props.createPost(values);
+        this.props.createPost(values, () => {
+            this.props.history.push('/'); //==> navigates to the list of posts
+        });
     }
 
     render() {
