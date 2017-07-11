@@ -12,7 +12,7 @@ export default function(state = {}, action) {
             // newstate[post.id] = post;
             // return newState;
 
-
+            //ES6 code style
             return { ...state, [action.payload.data.id] : action.payload.data };
         default:
             return state;
