@@ -1,5 +1,5 @@
 const path = require('path');
-const webpack      = require('webpack');
+const webpack = require('webpack');
 
 module.exports = {
   entry: {
@@ -11,11 +11,11 @@ module.exports = {
     filename: 'bundle.js'
   },
   module: {
-    loaders: [
+    rules: [
         {
             test: /\.js$/,
             exclude: /node_modules/,
-            loader: 'babel',
+            loader: 'babel-loader',
             query: {
               presets: ['react', 'es2015', 'stage-1']
             }
@@ -23,18 +23,18 @@ module.exports = {
     ]
   },
   resolve: {
-    extensions: ['', '.js', '.jsx'],
+      extensions: ['.js', '.jsx', '.json'],
       modules: [path.join(__dirname, 'src'), 'node_modules']
   },
-  plugins: new webpack.DefinePlugin({
-      'process.env': {
-          'NODE_ENV': JSON.stringify('production')
-      }
-  }),
   devServer: {
       port: 5000,
-      historyApiFallback: true,
-      contentBase: './',
-      index: 'index.html'
+      host: 'localhost',
+      publicPath: '/',
+      historyApiFallback:{
+          index:'/',
+          rewrites: [
+              { from: /^\/bundle\.js/, to: '/bundle.js' }
+          ]
+      }
   }
 };
