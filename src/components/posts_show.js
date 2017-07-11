@@ -10,18 +10,21 @@ class PostsShow extends Component {
     }
 
     render() {
-        const post = this.props.posts[this.props.match.params.id];
+        const { post } = this.props;
+
         return (
             <div>
-                {post.title}
+                <h3>{post.title}</h3>
+                <h6>Categories: {post.categories}</h6>
+                <p>{post.content}</p>
             </div>
         );
     }
 }
 
-function mapStateToProps({posts}) {
+function mapStateToProps({posts}, ownProps) {
     return {
-        posts
+        post: posts[ownProps.match.params.id]
     };
 }
 
